@@ -60,7 +60,12 @@ fun HomeScreen(navController: NavController){
             )
         },
         floatingActionButton = {
-            FloatingActionButton(onClick = { /* TODO: Navegar a la pantalla de crear post */ }) {
+            //Pense que decia TODO de bueno, TODO de absoluto, pero es TO DO
+            //Esta parte tal vez sea la que sirva para poder crear nuevos posts
+            //Esta es
+            FloatingActionButton(onClick = {
+                navController.navigate("gestionar_post_screen")
+            }) {
                 Icon(Icons.Default.Add, contentDescription = "Crear un nuevo Post")
             }
         }

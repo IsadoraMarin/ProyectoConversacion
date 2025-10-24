@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
+
 data class PostUiEstado(
     val posts: List<PostData> = emptyList()
 )
@@ -45,4 +46,33 @@ class PostViewModel : ViewModel() {
             estadoActual.copy(posts = estadoActual.posts + nuevoPost)
         }
     }
+
+    // Funcion de borrado (Puedes cambiar las imagenes de imagenAutor y de los otros post)
+    fun borrarPost(postId: Int) {
+        _uiState.update { estadoActual ->
+            val postActualizados = estadoActual.posts.filter { it.id != postId }
+            estadoActual.copy(posts = postActualizados)
+        }
+    }
+
+    //Funcion para actualizar (Muchas variables con POSTS help)
+    //
+    fun actualizarPost(postId: Int, nuevoTitulo: String, nuevoVideojuego: String){
+        _uiState.update { estadoActual ->
+            val postsActualizados = estadoActual.posts.map { post ->
+                //No funcionaba la variable, se llamaba post id, no post solamente.
+                //Habia que renombrarla
+                if (post.id == postId){
+
+                    post.copy(titulo = nuevoTitulo, videojuego = nuevoVideojuego) // 4. Corregido el valor de videojuego
+                } else {
+
+                    post
+                }
+            }
+
+            estadoActual.copy(posts = postsActualizados)
+        }
+    }
+
 }

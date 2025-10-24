@@ -23,82 +23,103 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.appconversacion.ViewModel.UsuarioViewModel
 import kotlinx.coroutines.launch
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.TopAppBar
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RegistroScreen(navController: NavController, viewModel: UsuarioViewModel){
     val estado by viewModel.estado.collectAsState()
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(all = 16.dp), // A comma is needed to separate parameters
-        verticalArrangement = Arrangement.spacedBy(space = 12.dp)
-    ) {
-
-        OutlinedTextField(
-            value = estado.nombre,
-            onValueChange = viewModel::onNombreChange,
-            label = {Text(text = "Nombre")},
-            isError = estado.errores.nombre != null,
-            supportingText = {
-                estado.errores.nombre?.let {
-                    Text(text = it, color = MaterialTheme.colorScheme.error)
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(text = "Crear Cuenta") },
+                navigationIcon = {
+                    IconButton(onClick = { navController.navigateUp() }) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "Volver atrás"
+                        )
+                    }
                 }
-            },
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        OutlinedTextField(
-            value = estado.correo,
-            onValueChange = viewModel::onCorreoChange,
-            label = {Text(text = "Correo")},
-            isError = estado.errores.correo != null,
-            supportingText = {
-                estado.errores.correo?.let {
-                    Text(text = it, color = MaterialTheme.colorScheme.error)
-                }
-            },
-
-            modifier = Modifier.fillMaxWidth()
-
-        )
-
-        OutlinedTextField(
-            value = estado.clave,
-            onValueChange = viewModel::onClaveChange,
-            label = {Text(text = "Contraseña")},
-            isError = estado.errores.clave != null,
-            supportingText = {
-                estado.errores.clave?.let {
-                    Text(text = it, color = MaterialTheme.colorScheme.error)
-                }
-            },
-
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Row(verticalAlignment = Alignment.CenterVertically){
-            Checkbox(
-                checked = estado.aceptarTerminos,
-                onCheckedChange = viewModel::onAceptarCondicionesChange
             )
-            Spacer(Modifier.width(width = 8.dp))
-            Text(text = "Aceptar terminos y condiciones" )
         }
+    ) { paddingValues ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+                .padding(all = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(space = 12.dp)
+        ) {
 
-        Button(
-            onClick = {
-                if (viewModel.validarFormulario()){
-                    navController.navigate(route = "Resumen")
-                }
-            },
-            modifier = Modifier.fillMaxWidth()
-        ){
-            Text(text = "Registrar")
-        }
+            OutlinedTextField(
+                value = estado.nombre,
+                onValueChange = viewModel::onNombreChange,
+                label = {Text(text = "Nombre")},
+                isError = estado.errores.nombre != null,
+                supportingText = {
+                    estado.errores.nombre?.let {
+                        Text(text = it, color = MaterialTheme.colorScheme.error)
+                    }
+                },
+                modifier = Modifier.fillMaxWidth()
+            )
 
+            OutlinedTextField(
+                value = estado.correo,
+                onValueChange = viewModel::onCorreoChange,
+                label = {Text(text = "Correo")},
+                isError = estado.errores.correo != null,
+                supportingText = {
+                    estado.errores.correo?.let {
+                        Text(text = it, color = MaterialTheme.colorScheme.error)
+                    }
+                },
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            OutlinedTextField(
+                value = estado.clave,
+                onValueChange = viewModel::onClaveChange,
+                label = {Text(text = "Contraseña")},
+                isError = estado.errores.clave != null,
+                supportingText = {
+                    estado.errores.clave?.let {
+                        Text(text = it, color = MaterialTheme.colorScheme.error)
+                    }
+                },
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Row(verticalAlignment = Alignment.CenterVertically){
+                Checkbox(
+                    checked = estado.aceptarTerminos,
+                    onCheckedChange = viewModel::onAceptarCondicionesChange
+                )
+                Spacer(Modifier.width(width = 8.dp))
+                Text(text = "Aceptar terminos y condiciones" )
+            }
+
+            Button(
+                onClick = {
+                    if (viewModel.validarFormulario()){
+                        navController.navigate(route = "Resumen")
+                    }
+                },
+                modifier = Modifier.fillMaxWidth()
+            ){
+                Text(text = "Registrar")
+            }
         }
     }
+}
 
 
