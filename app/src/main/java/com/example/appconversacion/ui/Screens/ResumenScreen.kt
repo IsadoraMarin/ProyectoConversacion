@@ -19,7 +19,6 @@ fun ResumenScreen(viewModel: UsuarioViewModel){
         Text(text = "Resumen de registro", style = MaterialTheme.typography.headlineMedium)
         Text(text = "Nombre: ${estado.nombre}")
         Text(text = "Correo: ${estado.correo}")
-        Text(text = "Direccion: ${estado.direccion}")
         Text(text = "Contraseña: ${"*".repeat(n = estado.clave.length)}")
         Text(text = "Terminos: ${if (estado.aceptarTerminos) "Aceptados" else "No los acepto"}")
     }

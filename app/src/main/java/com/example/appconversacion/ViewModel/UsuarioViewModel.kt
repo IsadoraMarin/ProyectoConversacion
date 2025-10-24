@@ -30,11 +30,6 @@ class UsuarioViewModel : ViewModel () {
 
     // Actualizar campo de la clave del usuario
 
-    fun onDireccionChange(valor: String){
-        _estado.update { it.copy(direccion = valor, errores = it.errores.copy(direccion = null)) }
-    }
-
-    //Actualizar campo de direccion de usuario
 
     fun onAceptarCondicionesChange(valor: Boolean){
         _estado.update { it.copy(aceptarTerminos = valor) }
@@ -46,13 +41,11 @@ class UsuarioViewModel : ViewModel () {
             nombre = if (estadoActual.nombre.isBlank()) "Este campo es obligatorio" else null,
             correo = if (!estadoActual.correo.contains("@")) "Correo invalido" else null,
             clave = if (estadoActual.clave.length > 6) " Debe tener mas de seis caracteres" else null,
-            direccion = if (estadoActual.direccion.isBlank())"El campo es obligatorio" else null,
         )
 
         val hayErrores = listOfNotNull(
             errores.nombre,
             errores.correo,
-            errores.direccion,
             errores.clave
         ).isNotEmpty()
 
