@@ -73,7 +73,6 @@ fun PostsScreen(
 
 @Composable
 //La idea de usar Unit en esta parte es que se mantenga reutilizable y limpio, siendo que Unit no tma los valores y solo ejecuta
-//Sin embargo, si esto es lo que genera problemas para que no se muestre, puedes cambiarlo por otras funciones
 fun PostItem(post: PostData, onEdit: () -> Unit, onDelete: () -> Unit) {
     //En este caso, solo le dice que estos botones funcionen cuando se opriman los botones
     Card(
