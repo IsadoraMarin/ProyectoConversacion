@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
-
+//Aqui se ve otra lista de los posts
 data class PostUiEstado(
     val posts: List<PostData> = emptyList()
 )
