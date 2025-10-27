@@ -12,6 +12,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.appconversacion.Model.PostData
 
+//Toda la funcion de los Posts
 @Composable
 fun PostDetailScreen(post: PostData) {
     Column(
