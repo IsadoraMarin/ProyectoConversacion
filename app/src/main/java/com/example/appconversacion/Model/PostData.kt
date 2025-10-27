@@ -2,7 +2,7 @@ package com.example.appconversacion.Model
 import androidx.annotation.DrawableRes
 import com.example.appconversacion.R
 
-
+//Clase para ver los datos de Post
 data class PostData(
     val id: Int,
     val autor: String,
