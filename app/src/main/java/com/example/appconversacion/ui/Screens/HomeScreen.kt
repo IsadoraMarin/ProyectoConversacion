@@ -1,6 +1,6 @@
 package com.example.appconversacion.ui.Screens
 
-import android.annotation.SuppressLint
+import android.annotation.SuppressLint //Esto hace que el Material3 no tire errores en los Padding Values
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -13,7 +13,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.layout.ModifierLocalBeyondBoundsLayout
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -24,13 +23,13 @@ import androidx.navigation.compose.rememberNavController
 import com.example.appconversacion.R
 import com.example.appconversacion.Model.PostData
 import com.example.appconversacion.ui.theme.AppConversacionTheme
-import org.jetbrains.annotations.Unmodifiable
 import androidx.compose.material.icons.filled.Person
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 
+//Esto hace que se vea una lista en HomeScreen
 fun HomeScreen(navController: NavController){
     val posts = listOf(
         PostData(1, "Usuario 1", "¿Vale la pena comprar el DLC de (Juego nuevo)?", "Videojuego 1", R.drawable.ic_launcher_background, 15),
@@ -38,7 +37,7 @@ fun HomeScreen(navController: NavController){
         PostData(3, "Usuario 3", "Videojuegos dificiles de completar", "Videojuego 3", R.drawable.ic_launcher_background, 8),
         PostData(4, "Usuario 4", "¿Que juegos nuevos tienen?", "Conversacion", R.drawable.ic_launcher_background, 35)
     )
-
+//Se cierra todo con Scaffold
     Scaffold(
         topBar = {
             TopAppBar(
@@ -89,7 +88,7 @@ fun HomeScreen(navController: NavController){
 }
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-
+//Esto hace que se vea el formulario de cuando se va a crear un post
 fun PostCard(post: PostData, onClick: () -> Unit){
     Card(
         modifier = Modifier.fillMaxWidth(),
