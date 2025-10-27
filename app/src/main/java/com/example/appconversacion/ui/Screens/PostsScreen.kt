@@ -1,6 +1,6 @@
 package com.example.appconversacion.ui.Screens
 
-import androidx.compose.foundation.interaction.HoverInteraction
+
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.lazy.LazyColumn
@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.sp
 import com.example.appconversacion.ViewModel.PostViewModel
 import com.example.appconversacion.Model.PostData
 
+//Esto hace que se vean los posts pero parece que hay errores
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PostsScreen(
