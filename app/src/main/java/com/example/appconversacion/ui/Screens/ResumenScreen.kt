@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.appconversacion.ViewModel.UsuarioViewModel
 
+//Toda la pantalla que aparece en resumen de registro
 @Composable
 fun ResumenScreen(viewModel: UsuarioViewModel){
     val estado by viewModel.estado.collectAsState()
